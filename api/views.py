@@ -37,12 +37,12 @@ class UpdateApiViews(generics.RetrieveUpdateAPIView):
     serializer_class = BlogSerializers
     lookup_field = 'id'
     permission_classes = (IsOwner, IsAuthenticated)
-    throttle_classes = [TenRequestMinThrottle]
+    throttle_classes = [ThreeRequestMinThrottle]
 
 
 class CreateApiViews(generics.CreateAPIView):
     serializer_class = BlogSerializers
-    throttle_classes = [TenRequestMinThrottle]
+    throttle_classes = [ThreeRequestMinThrottle]
     permission_classes = (IsOwner, IsAuthenticated)
     queryset = BlogModel.objects.all()
 
@@ -50,7 +50,7 @@ class CreateApiViews(generics.CreateAPIView):
 class DeleteApiViews(generics.DestroyAPIView):
     queryset = BlogModel.objects.all()
     serializer_class = BlogSerializers
-    throttle_classes = [TenRequestMinThrottle]
+    throttle_classes = [ThreeRequestMinThrottle]
     permission_classes = (IsOwner, IsAuthenticated)
     lookup_field = "id"
 
