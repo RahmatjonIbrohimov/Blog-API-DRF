@@ -72,5 +72,4 @@ class SortByField(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return BlogModel.objects.filter(title=self.request)
-        # return BlogModel.objects.all().order_by('title')
+        return BlogModel.objects.all().order_by('title')
