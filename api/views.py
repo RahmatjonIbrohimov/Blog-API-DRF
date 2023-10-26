@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 
 from .models import BlogModel
-from .serializers import BlogSerializers
+from .serializers import BlogSerializers, UserSerializer
 from .permissions import IsOwner
 
 
@@ -18,7 +18,7 @@ class ThreeRequestMinThrottle(AnonRateThrottle):
 
 class HomeApiViews(generics.ListAPIView):
     queryset = BlogModel.objects.all()
-    serializer_class = BlogSerializers
+    serializer_class = UserSerializer
     throttle_classes = [TenRequestMinThrottle]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
